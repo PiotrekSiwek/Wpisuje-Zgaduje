@@ -1,0 +1,35 @@
+@import "fonts";
+
+@mixin answerBoxes() {
+  border: 5px solid purple;
+  background: whitesmoke;
+  width: 60px;
+  height: 50px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 13px 2px #000000;
+  transition: 1s;
+}
+
+@mixin buttons (){
+  padding: 8px 15px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 5px 4px 17px -1px rgba(202, 180, 180, 0.72);
+  background: orangered;
+  color: whitesmoke;
+  font-family: $mainFont;
+  font-size: 25px;
+  font-weight: bold;
+  border: 3px solid whitesmoke;
+  transition: 0.5s;
+  width: 150px;
+  text-decoration: none;
+  text-align: center;
+  margin: 45px 40px;
+}

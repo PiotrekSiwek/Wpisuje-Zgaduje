@@ -1,0 +1,44 @@
+@import "src/scss/fonts";
+
+.aside{
+  max-width: 6%;
+  color: white;
+  background: #1d1d1d;
+  opacity: 0.8;
+}
+
+.aside__box{
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  font-family: $mainFont;
+  height: 70%;
+  text-align: center;
+
+  .aside__text{
+    margin: 30px 4px;
+  }
+
+  .fa-trophy{
+    font-size: 30px;
+  }
+}
+
+.fa-trophy{
+  font-size: 30px;
+}
+
+.aside__points{
+  font-size: 15px;
+  font-family: "Lucida Bright", sans-serif;
+  margin-top: 1px;
+}
+
+.fa-life-ring{
+  margin: 35px 0;
+}
+
+
+.aside__points-fee{
+  color: red;
+}

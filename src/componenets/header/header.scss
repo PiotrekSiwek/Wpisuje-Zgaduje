@@ -1,0 +1,57 @@
+@import "src/scss/fonts";
+
+.header {
+  background: #1d1d1d;
+  opacity: 0.8;
+
+
+  .header__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .header__text,
+    .header__login{
+      font-family: $mainFont;
+      color: white;
+      font-size: 30px;
+      width: 30%;
+      text-align: center;
+    }
+
+    .header__text > span{
+      display: block;
+    }
+
+    .header__logo strong {
+      font-family: $logoFont;
+      font-size: 40px;
+    }
+
+    .header__logo strong:nth-of-type(1) {
+      color: orange;
+    }
+
+    .header__logo strong:nth-of-type(2) {
+      color: red;
+    }
+
+    .header__logo strong:nth-of-type(3) {
+      color: green;
+    }
+
+    .header__logo > span {
+      color: white;
+      font-size: 40px;
+    }
+
+    .fa-pen{
+      font-size: 30px;
+      color: #236bc3;
+      margin-left: 5px;
+    }
+
+  }
+}
+

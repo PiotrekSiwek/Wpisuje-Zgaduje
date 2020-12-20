@@ -1,0 +1,131 @@
+@import "src/scss/fonts";
+@import "src/scss/mixins";
+
+.game__pictures {
+  display: flex;
+  margin-top: 20px;
+
+  .game__pictures__frame {
+    background: orange;
+    height: 180px;
+    width: 243px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 2px 2px 15px 0 #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black 2px solid;
+  }
+
+  .game__pictures__photos {
+    border-radius: 7px;
+  }
+}
+
+.game__answers {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, sans-serif;
+  font-size: 30px;
+  color: orange;
+  text-align: center;
+
+
+  .game__answers__boxes {
+    @include answerBoxes;
+    background: purple;
+  }
+
+  .game__answers__boxes.black {
+    @include answerBoxes;
+  }
+
+  .game__answers__boxes-correct {
+    @include answerBoxes;
+    background: forestgreen;
+  }
+
+  .game__answers__hint {
+    display: none;
+  }
+
+  .game__answers__hint-show {
+    display: inline;
+    margin-left: 3px;
+    color: orangered;
+  }
+}
+
+.game__answers__type-wrap{
+  width: 20%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.game__answers__type-in {
+  text-align: center;
+  border-radius: 8px;
+  margin: 40px auto;
+  display: block;
+  border: 4px solid orange;
+  width: 100%;
+  height: 40px;
+  outline: none;
+
+
+  //&::placeholder {
+  //  //color: purple;
+  //  //font-family: $mainFont;
+  //  //font-size: 20px;
+  //  //font-weight: bolder;
+  //  //letter-spacing: 0;
+  //}
+
+  &[type="text"] {
+    color: purple;
+    font-family: $mainFont;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+}
+
+.game__answers__arrow-info {
+  color: whitesmoke;
+  font-family: $mainFont;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 0;
+  position: absolute;
+  width: 200px;
+  left: 110%;
+  top: 25%;
+}
+
+.fa-arrow-left {
+  margin-right: 7px;
+  font-size: 15px;
+}
+
+.game__operation__box {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  .game__operation__buttons {
+    @include buttons;
+    margin: 0 20px;
+    padding: 4px 10px;
+    width: 100px;
+    font-size: 20px;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+  }
+
+}
