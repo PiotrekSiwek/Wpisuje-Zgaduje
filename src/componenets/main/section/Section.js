@@ -6,7 +6,7 @@ import "./section.scss"
 
 const Section = () => {
     return (
-        <section className="section">
+        <section className="section" on>
             <HashRouter>
                 <Route path="/" exact={true} component={Intro}/>
                 <Route path="/gra" component={Game}/>

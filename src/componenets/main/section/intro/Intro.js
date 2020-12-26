@@ -29,7 +29,7 @@ const Intro = () => {
     const [signInError, setSignInError] = useState(false);
     const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
 
-    const [bannerRoll, setBannerRoll] = useState(0)
+    const [bannerRoll, setBannerRoll] = useState(0);
 
     const [form, setForm] = useState({
         name: "",
@@ -160,9 +160,20 @@ const Intro = () => {
         })
     }
 
+    const handleShowLoginForm = () =>{
+        setShowHideForm(prevState=>!prevState)
+    }
+
+    const handleShowRegistryForm = () =>{
+        setChangeLoginToRegistryForm(prevState => !prevState);
+        setSignInError(false);
+        setSignUpError(false)
+    }
+
     useEffect(() => {
         loginStatus()
     }, [])
+
 
     useEffect(()=>{
         const time = setTimeout(()=>{
@@ -176,17 +187,6 @@ const Intro = () => {
         },1000);
         return()=> clearTimeout(time)
     },[])
-
-
-    const handleShowLoginForm = () =>{
-        setShowHideForm(prevState=>!prevState)
-    }
-
-    const handleShowRegistryForm = () =>{
-        setChangeLoginToRegistryForm(prevState => !prevState);
-        setSignInError(false);
-        setSignUpError(false)
-    }
 
 
     return (

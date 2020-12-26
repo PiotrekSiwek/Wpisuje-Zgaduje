@@ -4,7 +4,8 @@ import "./footer.scss"
 const Footer = () => {
     return(
         <footer className="footer">
-            <span>poćwicz również matematykę</span><a href="http://piotrsiwek.pl/matematyka">Matma</a>
+            <span>poćwicz również matematykę</span>
+            <span><a className="footer__link" href="http://piotrsiwek.pl/matematyka">Matma</a></span>
         </footer>
     )
 }

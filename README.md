@@ -13,4 +13,3 @@ Istnieje możliwość logowania sie dzieki czemu punkty zostają przypisane do k
 
 - brak RWD,
 - brak możliwości wylogowania się z poziomu ekranu gry, należy powrócić do strony głównej przyciskiem powrót,
-- brak wszystkich instrukcji dla gracza.
