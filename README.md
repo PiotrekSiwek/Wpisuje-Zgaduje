@@ -12,4 +12,8 @@ Istnieje możliwość logowania sie dzieki czemu punkty zostają przypisane do k
 ## Gra w fazie rozwoju
 
 - brak RWD,
-- brak możliwości wylogowania się z poziomu ekranu gry, należy powrócić do strony głównej przyciskiem powrót,
+
+
+## 28.12.2020
+- dodano możliwości wylogowania się z poziomu ekranu gry,
+- poprawa wyglądu interfejsu

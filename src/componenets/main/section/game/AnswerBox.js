@@ -1,5 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {Link} from "react-router-dom";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 import {LoginContext} from "../../../../contexts/LoginContext";
 
@@ -10,7 +13,7 @@ let hintCost = 0;
 
 const AnswerBox = ({answer, plName, nextPictures}) => {
 
-    const {addPoints, hintAsideChange} = useContext(LoginContext);
+    const {addPoints, hintAsideChange, handleLogin, userID, points, resetPoints} = useContext(LoginContext);
 
     const [bannerRoll, setBannerRoll] = useState(0);
     const [showBannerRoll, setShowBannerRoll] = useState(true);
@@ -20,7 +23,10 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
     const [inputLocalizationMessage, setInputLocalizationMessage] = useState(true)
 
     const [hint, setHint] = useState(false);
+    const [hintLetter, setHintLetter] = useState(Math.floor(Math.random()*plName.length))
     const [boxColorChange, setBoxColorChange] = useState("");
+
+    const [showButtonLogOut, setShowButtonLogOut ] = useState(false)
 
 
     const handleChangeInput = (e) => {
@@ -39,7 +45,8 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
         hintCost = 0;
         setInputBlocker(false);
         hintAsideChange("");
-        setBoxColorChange("")
+        setBoxColorChange("");
+        setHintLetter(Math.floor(Math.random()*plName.length));
     }
 
     const handleClickHelp = () => {
@@ -54,34 +61,60 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
         setBoxColorChange("black")
     }
 
-    const handleBannerExit =() =>{
+    const handleBannerExit = () => {
         setShowBannerRoll(false);
     }
 
-    useEffect(()=>{
-        const time = setTimeout(()=>{
+    const savePoints = () => {
+        firebase.firestore().collection("Players").doc(`${userID}`)
+            .update({
+                points: points,
+                docNumber: userID
+            })
+            .catch(error => console.log(error));
+    }
+
+    const handleLogOut = () => {
+        firebase.auth().signOut()
+            .then(() => {
+                handleLogin("login");
+                savePoints();
+            })
+            .catch(e => console.log(e.message))
+    }
+
+    useEffect(() => {
+        const loginStatus = firebase.auth().onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+                setShowButtonLogOut(true);
+            } else {
+                setShowButtonLogOut(false);
+                resetPoints();
+            }
+        })
+        const time = setTimeout(() => {
             const banner = setInterval(() => {
                 setBannerRoll(prevState => {
                     if (prevState === 100) {
                         clearInterval(banner)
-                    } else return  prevState +1
+                    } else return prevState + 1
                 });
             }, 10)
-        },1000);
-        const bannerTime = setTimeout(()=>{
+        }, 1000);
+        const bannerTime = setTimeout(() => {
             setShowBannerRoll(false)
         }, 10000)
         return () => {
             clearTimeout(time);
             clearTimeout(bannerTime);
+            loginStatus();
         }
-    },[])
+    }, [])
 
 
     return (
         <>   {showBannerRoll ?
             <div className="game__answers__banner" onClick={handleBannerExit}>
-                {/*<button className="game__answer__btn-exit" onClick={handleBannerExit}>X</button>*/}
                 <h2 className="intro__banner" style={{height: `${bannerRoll}px`}}>Zgaduj co jest na obrazkach i wpisuj
                     we wskazane pole </h2>
                 <h3 className="intro__banner" style={{height: `${bannerRoll}px`}}> fioletowe kwadraciki pokazują ile
@@ -92,22 +125,19 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
                 <div className={"game__answers"}>
                     {answer.map((elm, index) => {
                         return (
-                            <>
                                 <div
                                     className={inputText[index] === elm ? "game__answers__boxes-correct" : `game__answers__boxes ${boxColorChange}`}
                                     key={index}>{inputText[index]}
 
                                     <span
-                                        className={index === 0 && hint ? "game__answers__hint-show" : "game__answers__hint"}>{elm}</span>
+                                        className={index === hintLetter && hint ? "game__answers__hint-show" : "game__answers__hint"}>{elm}</span>
                                 </div>
-                            </>
                         )
                     })}
                 </div>
 
                 <div className={"game__answers__type-wrap"}>
                     <input className="game__answers__type-in"
-                        // placeholder="tutaj wpisz odpowiedz..."
                            disabled={inputBlocker}
                            type={"text"}
                            value={inputText}
@@ -119,11 +149,16 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
                 </div>
 
                 <div className="game__operation__box">
-                    <button className={"game__operation__buttons"} onClick={handleClickNext}>Dalej</button>
-                    <button className={"game__operation__buttons"}
+                    <button className="game__operation__buttons" onClick={handleClickNext}>Dalej</button>
+                    <button className="game__operation__buttons"
+                            disabled={inputBlocker}
                             onClick={handleClickHelp}>{!hint ? "Podpowiedz" : "Ukryj"}</button>
-                    <button className="game__operation__buttons">Wyloguj</button>
-                    <Link className="game__operation__buttons" to="/">Powrot</Link>
+
+                    {showButtonLogOut &&
+                    <button className="game__operation__buttons"
+                            onClick={handleLogOut}>Wyloguj</button>}
+
+                    <Link className="game__operation__buttons" to="/">Powrot </Link>
                 </div>
             </div>
         }

@@ -19,7 +19,7 @@ let userID = "";
 
 const Intro = () => {
 
-    const {handleLogin, addPoints, points, resetPoints, userName} = useContext(LoginContext);
+    const {handleLogin, addPoints, points, resetPoints, userName, userDocID} = useContext(LoginContext);
 
 
     const [changeLoginLogoutButton, setChangeLoginLogoutButton] = useState(false);
@@ -47,7 +47,7 @@ const Intro = () => {
         })
     }
 
-    const handleSignIn = (e) => {
+    const handleSignIn = () => {
         const mail = form.email;
         const password = form.password;
         const promise = auth.signInWithEmailAndPassword(mail, password);
@@ -69,6 +69,7 @@ const Intro = () => {
                         const userData = players.filter(elm => elm.userId === userID);
                         console.log(userData)
                         docID = userData[0].docNumber;
+                        userDocID(docID);
                         handleLogin(userData[0].name)
                         addPoints(userData[0].points);
                     })
@@ -80,7 +81,7 @@ const Intro = () => {
             });
     }
 
-    const handleSignUp = e => {
+    const handleSignUp = () => {
         if(form.name.length < 3){
             return setSignUpError(true)
         }
@@ -101,6 +102,7 @@ const Intro = () => {
                     }).then(data => {
                     console.log(data.id);
                     docID = data.id;
+                    userDocID(docID);
                     console.log(docID);
                     handleLogin(form.name);
                 })
@@ -112,7 +114,7 @@ const Intro = () => {
             });
     }
 
-    const handleSignOut = (e) => {
+    const handleSignOut = () => {
         auth.signOut()
             .then(() => {
                 handleLogin("login");
@@ -132,8 +134,18 @@ const Intro = () => {
     }
 
 
-    const loginStatus = () => {
-        auth.onAuthStateChanged(firebaseUser => {
+    const handleShowLoginForm = () =>{
+        setShowHideForm(prevState=>!prevState)
+    }
+
+    const handleShowRegistryForm = () =>{
+        setChangeLoginToRegistryForm(prevState => !prevState);
+        setSignInError(false);
+        setSignUpError(false)
+    }
+
+    useEffect(() => {
+        const loginStatus = auth.onAuthStateChanged(firebaseUser => {
             if (firebaseUser) {
                 console.log(firebaseUser);
                 setChangeLoginLogoutButton(true);
@@ -157,21 +169,8 @@ const Intro = () => {
                 setShowWelcomeMessage(false)
                 resetPoints();
             }
-        })
-    }
-
-    const handleShowLoginForm = () =>{
-        setShowHideForm(prevState=>!prevState)
-    }
-
-    const handleShowRegistryForm = () =>{
-        setChangeLoginToRegistryForm(prevState => !prevState);
-        setSignInError(false);
-        setSignUpError(false)
-    }
-
-    useEffect(() => {
-        loginStatus()
+        });
+        return () => loginStatus();
     }, [])
 
 

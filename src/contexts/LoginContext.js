@@ -7,7 +7,12 @@ const LoginProvider = ({children}) => {
 
     const [userName, setUserName] = useState("login");
     const [points, setPoint] = useState(0);
-    const [hintFee, setHintFee] = useState("")
+    const [hintFee, setHintFee] = useState("");
+    const [userID, setUserID] = useState("");
+
+    const userDocID = (data) =>{
+        setUserID(data)
+    }
 
     const handleLogin = (name) => {
         setUserName(name)
@@ -26,7 +31,7 @@ const LoginProvider = ({children}) => {
     }
 
     return (
-        <LoginContext.Provider value={{userName, handleLogin, points, addPoints, resetPoints, hintFee, hintAsideChange}}>
+        <LoginContext.Provider value={{userName, handleLogin, points, addPoints, resetPoints, hintFee, hintAsideChange, userID, userDocID}}>
             {children}
         </LoginContext.Provider>
     )
