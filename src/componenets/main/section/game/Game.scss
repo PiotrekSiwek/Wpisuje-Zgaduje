@@ -37,6 +37,8 @@
 
   .game__pictures__photos {
     border-radius: 7px;
+    width: 224px;
+    height: 160px;
   }
 }
 
@@ -77,26 +79,13 @@
 
 .game__answers__banner{
   margin-top: 60px;
-
-  //.game__answer__btn-exit{
-  //  background: purple;
-  //  padding: 3px 6px;
-  //  text-align: center;
-  //  margin-right: 20px;
-  //  border-radius: 5px;
-  //  outline: none;
-  //  cursor: pointer;
-  //  margin-left: 100%;
-  //  color: whitesmoke;
-  //  border: 2px solid white;
-  //}
 }
-
 
 .game__answers__type-wrap{
   width: 20%;
   margin: 0 auto;
   position: relative;
+  z-index: 0;
 }
 
 .game__answers__type-in {
@@ -108,13 +97,14 @@
   width: 100%;
   height: 40px;
   outline: none;
-
+  z-index: 0;
 
   &[type="text"] {
     color: purple;
-    font-family: $mainFont;
+    font-family:'Roboto', sans-serif;
+    //font-family: 'Kalam', cursive;
     letter-spacing: 2px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bolder;
   }
 }
@@ -137,9 +127,10 @@
 }
 
 .game__operation__box {
-  margin: 0 auto;
   display: flex;
   justify-content: center;
+  margin: 0 auto 15px;
+
 
   .game__operation__buttons {
     @include buttons;
@@ -157,5 +148,128 @@
 @keyframes loading {
   100% {
     transform: rotate(1turn);
+  }
+}
+
+
+//------- Media ----------
+
+@media (max-width: 1100px){
+  .game__answers {
+    margin-top: 50px;
+    font-size: 22px;
+
+    .game__answers__boxes {
+      width: 50px;
+      height: 40px;
+      margin: 0 12px;
+    }
+
+    .game__answers__boxes.black {
+      width: 50px;
+      height: 40px;
+      margin: 0 15px;
+    }
+
+    .game__answers__boxes-correct {
+      width: 50px;
+      height: 40px;
+      margin: 0 15px;
+    }
+
+    .game__answers__hint-show {
+      margin-left: 2px;
+    }
+  }
+}
+
+
+@media (max-width: 980px){
+  .game__answers__type-wrap{
+    width: 30%
+  }
+}
+
+
+@media (max-width: 850px){
+  .game__pictures {
+    .game__pictures__frame {
+      height: 120px;
+      width: 162px;
+    }
+    .game__pictures__photos{
+      width: 150px;
+      height: 106px;
+    }
+  }
+  .game__answers{
+    flex-wrap: wrap;
+    .game__answers__boxes {
+      margin: 10px 12px;
+    }
+    .game__answers__boxes.black {
+      margin: 10px 12px
+    }
+    .game__answers__boxes-correct {
+      margin: 10px 12px
+    }
+  }
+}
+
+
+@media (max-width: 720px){
+  .game__answers__type-wrap{
+    width: 200px
+  }
+  .game__answers__arrow-info {
+    left: 8%;
+    top: 120%;
+  }
+  .fa-arrow-left {
+    transform: rotate(90deg);
+  }
+  .game__operation__box{
+    margin-top: 50px;
+  }
+}
+
+
+@media (max-width: 600px){
+  .game__pictures {
+    .game__pictures__frame {
+      height: 90px;
+      width: 121px;
+    }
+    .game__pictures__photos{
+      width: 112px;
+      height: 80px;
+    }
+  }
+  .game__operation__box {
+    flex-wrap: wrap;
+    .game__operation__buttons {
+      margin: 5px 10px;
+      width: 70px;
+      font-size: 15px;
+      padding: 2px 2px;
+    }
+  }
+}
+
+
+@media (max-width: 450px) {
+  .game__pictures {
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    .game__pictures__frame {
+      margin-top: 10px;
+    }
+  }
+  .game__answers{
+    margin-top: 15px;
+  }
+  .game__answers__type-in {
+    margin: 20px auto;
   }
 }

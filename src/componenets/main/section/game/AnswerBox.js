@@ -23,10 +23,10 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
     const [inputLocalizationMessage, setInputLocalizationMessage] = useState(true)
 
     const [hint, setHint] = useState(false);
-    const [hintLetter, setHintLetter] = useState(Math.floor(Math.random()*plName.length))
+    const [hintLetter, setHintLetter] = useState(Math.floor(Math.random() * answer.length));
     const [boxColorChange, setBoxColorChange] = useState("");
 
-    const [showButtonLogOut, setShowButtonLogOut ] = useState(false)
+    const [showButtonLogOut, setShowButtonLogOut] = useState(false)
 
 
     const handleChangeInput = (e) => {
@@ -46,10 +46,10 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
         setInputBlocker(false);
         hintAsideChange("");
         setBoxColorChange("");
-        setHintLetter(Math.floor(Math.random()*plName.length));
     }
 
     const handleClickHelp = () => {
+        setHintLetter(Math.floor(Math.random() * answer.length));
         setHint(prevState => !prevState);
         if (hintCost === 0) {
             hintCost += 0.5
@@ -63,6 +63,10 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
 
     const handleBannerExit = () => {
         setShowBannerRoll(false);
+    }
+
+    const handleKeyDownInput = () => {
+        setHint(false)
     }
 
     const savePoints = () => {
@@ -80,7 +84,8 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
                 handleLogin("login");
                 savePoints();
             })
-            .catch(e => console.log(e.message))
+            .catch(e => console.log(e.message));
+        resetPoints();
     }
 
     useEffect(() => {
@@ -89,7 +94,6 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
                 setShowButtonLogOut(true);
             } else {
                 setShowButtonLogOut(false);
-                resetPoints();
             }
         })
         const time = setTimeout(() => {
@@ -117,21 +121,21 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
             <div className="game__answers__banner" onClick={handleBannerExit}>
                 <h2 className="intro__banner" style={{height: `${bannerRoll}px`}}>Zgaduj co jest na obrazkach i wpisuj
                     we wskazane pole </h2>
-                <h3 className="intro__banner" style={{height: `${bannerRoll}px`}}> fioletowe kwadraciki pokazują ile
-                    liter ma szukane słowo i weryfikują odpowiedź</h3>
+                <h3 className="intro__banner" style={{height: `${bannerRoll}px`}}> fioletowe kwadraciki pokazuja ile
+                    liter ma szukane słowo i weryfikuja odpowiedz</h3>
             </div>
             :
             <div>
                 <div className={"game__answers"}>
                     {answer.map((elm, index) => {
                         return (
-                                <div
-                                    className={inputText[index] === elm ? "game__answers__boxes-correct" : `game__answers__boxes ${boxColorChange}`}
-                                    key={index}>{inputText[index]}
+                            <div
+                                className={inputText[index] === elm ? "game__answers__boxes-correct" : `game__answers__boxes ${boxColorChange}`}
+                                key={index}>{inputText[index]}
 
-                                    <span
-                                        className={index === hintLetter && hint ? "game__answers__hint-show" : "game__answers__hint"}>{elm}</span>
-                                </div>
+                                <span
+                                    className={index === hintLetter && hint ? "game__answers__hint-show" : "game__answers__hint"}>{elm}</span>
+                            </div>
                         )
                     })}
                 </div>
@@ -142,7 +146,8 @@ const AnswerBox = ({answer, plName, nextPictures}) => {
                            type={"text"}
                            value={inputText}
                            onClick={handleClickInput}
-                           onChange={handleChangeInput}/>
+                           onChange={handleChangeInput}
+                           onKeyDown={handleKeyDownInput}/>
                     {inputLocalizationMessage &&
                     <span className="game__answers__arrow-info"><i
                         className="fas fa-arrow-left"/>tutaj wpisz odpowiedz </span>}

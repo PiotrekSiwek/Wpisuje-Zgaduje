@@ -53,21 +53,21 @@ const Intro = () => {
         const promise = auth.signInWithEmailAndPassword(mail, password);
         promise
             .then(user => {
-                console.log(user);
+                // console.log(user);
                 userID = user.user.uid;
                 setSignInError(false);
                 db.collection("Players")
                     .get()
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         const players = [];
                         data.forEach(record => {
                             const store = record.data()
                             players.push(store)
                         })
-                        console.log(players);
+                        // console.log(players);
                         const userData = players.filter(elm => elm.userId === userID);
-                        console.log(userData)
+                        // console.log(userData)
                         docID = userData[0].docNumber;
                         userDocID(docID);
                         handleLogin(userData[0].name)
@@ -90,7 +90,7 @@ const Intro = () => {
         const promise = auth.createUserWithEmailAndPassword(mail, password);
         promise
             .then(user => {
-                console.log(user.user.uid);
+                // console.log(user.user.uid);
                 userID = user.user.uid;
                 setSignUpError(false)
                 db.collection("Players")
@@ -100,10 +100,10 @@ const Intro = () => {
                         name: form.name,
                         points: 0
                     }).then(data => {
-                    console.log(data.id);
+                    // console.log(data.id);
                     docID = data.id;
                     userDocID(docID);
-                    console.log(docID);
+                    // console.log(docID);
                     handleLogin(form.name);
                 })
                     .catch(error => console.log(error))
@@ -131,6 +131,7 @@ const Intro = () => {
                 docNumber: docID
             })
             .catch(error => console.log(error));
+        resetPoints();
     }
 
 
@@ -147,7 +148,7 @@ const Intro = () => {
     useEffect(() => {
         const loginStatus = auth.onAuthStateChanged(firebaseUser => {
             if (firebaseUser) {
-                console.log(firebaseUser);
+                // console.log(firebaseUser);
                 setChangeLoginLogoutButton(true);
                 setTimeout(()=>{
                     setShowWelcomeMessage(true)
@@ -159,7 +160,7 @@ const Intro = () => {
                 });
 
             } else {
-                console.log("nie zalogowany");
+                // console.log("nie zalogowany");
                 setChangeLoginLogoutButton(false);
                 setForm({
                     name: "",
@@ -167,10 +168,11 @@ const Intro = () => {
                     password: ""
                 })
                 setShowWelcomeMessage(false)
-                resetPoints();
             }
         });
-        return () => loginStatus();
+        return () => {
+            loginStatus();
+        }
     }, [])
 
 
@@ -201,7 +203,7 @@ const Intro = () => {
             {showHideForm &&
             <div className="intro__form">
                 <button className="form__btn" onClick={handleShowRegistryForm}>{changeLoginToRegistryForm? "Rejestracja" : "Logowanie"}</button>
-                {showWelcomeMessage && <span className="form__welcome-message">Witaj {userName}, kliknij Gramy</span>}
+                {showWelcomeMessage && <div className="form__welcome-message"><span >Hej {userName},kliknij "Gra" </span></div>}
 
                 <form className="form" onSubmit={(e => e.preventDefault())}>
                     {!changeLoginToRegistryForm? <>
@@ -225,7 +227,7 @@ const Intro = () => {
             </div>}
             {!showHideForm&&<>
             <h2 className="intro__banner" style={{height:`${bannerRoll}px`}}> Witaj w grze !!! </h2>
-            <h3 className="intro__banner" style={{height:`${bannerRoll}px`}}>Zaloguj się i kliknij graj by rozpoczać</h3>
+            <h3 className="intro__banner" style={{height:`${bannerRoll}px`}}>Zaloguj sie i kliknij graj by rozpoczac</h3>
                 </>}
         </>
     )

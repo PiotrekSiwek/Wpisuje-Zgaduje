@@ -20,8 +20,7 @@ const RandomPictures = ({pictures}) => {
                             <img className="game__pictures__photos"
                                  src={elm.src.tiny}
                                  alt=""
-                                 width="224"
-                                 height="160"/>
+                            />
                         </div>
                     )
                 })

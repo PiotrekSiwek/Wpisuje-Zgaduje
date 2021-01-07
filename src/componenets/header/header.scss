@@ -12,7 +12,7 @@
 
 
     .header__text,
-    .header__login{
+    .header__login {
       font-family: $mainFont;
       color: white;
       font-size: 30px;
@@ -20,7 +20,7 @@
       text-align: center;
     }
 
-    .header__text > span{
+    .header__text > span {
       display: block;
     }
 
@@ -46,12 +46,71 @@
       font-size: 40px;
     }
 
-    .fa-pen{
+    .fa-pen {
       font-size: 30px;
       color: #236bc3;
       margin-left: 5px;
     }
-
   }
 }
+
+@media (max-width: 970px) {
+  .header {
+    .header__box {
+      .header__text {
+        width: 40%;
+      }
+      .header__text > span {
+        display: inline;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .header {
+    .header__box {
+      .header__text {
+        display: none;
+      }
+      .header__logo {
+        width: 45%;
+        margin-left: 50px;
+      }
+      .header__logo strong {
+        font-size: 30px;
+      }
+      .header__logo > span {
+        font-size: 30px;
+      }
+      .fa-pen {
+        font-size: 20px;
+      }
+      .header__login {
+        width: 45%;
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+
+//------- Media ----------
+
+
+@media (max-width: 390px) {
+  .header {
+    .header__box {
+      .header__logo {
+        margin-left: 1px;
+      }
+      .header__login {
+        width: 70%;
+      }
+    }
+  }
+}
+
+
 

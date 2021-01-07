@@ -9,11 +9,11 @@ Punkty są sumowane za kolejne odpowiedzi.
 Istnieje możliwość logowania sie dzieki czemu punkty zostają przypisane do konta gracza i nie giną po zakoczeniu zabawy.
 
 
-## Gra w fazie rozwoju
-
-- brak RWD,
-
-
 ## 28.12.2020
 - dodano możliwości wylogowania się z poziomu ekranu gry,
 - poprawa wyglądu interfejsu
+
+## 07.01.2021
+
+- poprawki,
+- dodanie responsywności

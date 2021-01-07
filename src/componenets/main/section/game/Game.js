@@ -29,11 +29,11 @@ const Game = () => {
             }
         })
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 return response.json()
             })
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setPictures([...data.photos])
             })
 
@@ -42,7 +42,7 @@ const Game = () => {
 
     const handleClick = () => {
         let randomNumber = Math.floor(Math.random() * wordData.length)
-        let name = wordData[randomNumber]
+        let name = wordData[randomNumber];
         setSearchName(name);
         setAnswer([...name.polName.toUpperCase()]);
     }
