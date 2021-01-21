@@ -1,4 +1,4 @@
-# Zgaduje & Wpisuje 
+# Guess & Write
 
 Application for six years old pupils to train writing in a quiz way.
 Players must guess what is on the pictures and write down the answer.
