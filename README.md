@@ -1,19 +1,20 @@
 # Zgaduje & Wpisuje 
 
-Aplikacja dla pierwszoklasistów do zabawy i nauki pisania słów przez zabawę w formie Quizu. 
-Gracz musi wpisać co jest przedstawioen na obrazkach (np. liść) i wpisać słówko we wskazane pole. 
-Każda wpisana poprwanie litera jest odznaczana zielonym kolorem.
-Za zgadnięte i wpsiane słowo gracz otrzymuje 1pkt.
-Istnieje możliwośc skorzystania z podpowiedzi, lecz kosztuje ona gracza 0,5pkt.
-Punkty są sumowane za kolejne odpowiedzi.
-Istnieje możliwość logowania sie dzieki czemu punkty zostają przypisane do konta gracza i nie giną po zakoczeniu zabawy.
+Application for six years old pupils to train writing in a quiz way.
+Players must guess what is on the pictures and write down the answer.
+Each corectly write letter is marked on green.
+Correct answers are rewarded with points (1 point per word).
+Hint button may help guees word, but cost 0.5 point.
+Login option store points on the server so players do not lose their achievements.
 
+## Created with:
+- JS React - React Router, Hooks (useState, useEffect, useContext),
+- Sass, 
+- RWD, 
+- NPM,
+- Rest API, 
+- Firebase Auth & Firestore.
 
-## 28.12.2020
-- dodano możliwości wylogowania się z poziomu ekranu gry,
-- poprawa wyglądu interfejsu
-
-## 07.01.2021
-
-- poprawki,
-- dodanie responsywności
+## Installation
+- npm i,
+- npm start
