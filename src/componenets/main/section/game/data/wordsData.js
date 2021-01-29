@@ -88,7 +88,7 @@ const wordData = [
         engName: "bulb"
     },
     {
-        polName: "księzyc",
+        polName: "księżyc",
         engName: "moon"
     },
     {
@@ -108,8 +108,8 @@ const wordData = [
         engName: "airplane"
     },
     {
-        polName: "gitara",
-        engName: "gitar"
+        polName: "klucze",
+        engName: "keys"
     },
     {
         polName: "jezioro",
@@ -228,10 +228,6 @@ const wordData = [
         engName: "tiger"
     },
     {
-        polName: "balon",
-        engName: "baloon"
-    },
-    {
         polName: "orzech",
         engName: "nut"
     },
@@ -302,7 +298,28 @@ const wordData = [
     {
         polName: "cześć",
         engName: "hello"
+    },
+    {
+        polName: "drewno",
+        engName: "wood"
+    },
+    {
+        polName: "mysz",
+        engName: "mouse"
+    },
+    {
+        polName: "trawa",
+        engName: "grass"
+    },
+    {
+        polName: "wiśnia",
+        engName: "cherry"
+    },
+    {
+        polName: "most",
+        engName: "bridge"
     }
+
 ]
 
 export {wordData}

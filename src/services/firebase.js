@@ -1,6 +1,6 @@
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDs24Qnl06LhzRJA_dLKTtEf4fAlRVlDX4",
+    apiKey: `${process.env.REACT_APP_FIREKEY}`,
     authDomain: "projekt-words.firebaseapp.com",
     projectId: "projekt-words",
     storageBucket: "projekt-words.appspot.com",

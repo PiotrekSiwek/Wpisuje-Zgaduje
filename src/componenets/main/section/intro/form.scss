@@ -1,0 +1,107 @@
+@import "src/scss/fonts";
+@import "src/scss/mixins";
+
+.intro-form {
+  width: 40%;
+  padding: 15px;
+  background: orange;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 0 19px 1px #000000;
+  overflow: hidden;
+  transition: 4s;
+}
+
+.form-btn {
+  @include buttons;
+  background: #3d7314;
+  font-family: Arial, serif;
+  font-size: 12px;
+  border: 1px solid whitesmoke;
+  width: 100px;
+  margin: 0;
+
+  &:hover {
+    transform: scale(0.97);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__input {
+    width: 60%;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid white;
+
+    &::placeholder {
+      color: purple;
+      font-family: $mainFont;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+
+    &:focus {
+      box-shadow: 0 0 19px 1px #000000;
+    }
+  }
+
+  &__validation {
+    color: purple;
+    font-style: italic;
+    font-family: "Arial Narrow", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 2px;
+  }
+}
+
+.sign-btn {
+  margin-top: 10px;
+}
+
+@media (min-width: 1250px) {
+  .intro-form {
+    width: 500px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .form {
+    &__input {
+      width: 80%;
+    }
+  }
+  .form-btn {
+    font-size: 10px;
+    width: 70px;
+    padding: 6px 2px;
+  }
+}
+@media (max-width: 800px) {
+  .intro-form {
+    width: 60%;
+  }
+}
+
+@media (max-width: 450px) {
+  .intro-form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 350px) {
+  .intro-form {
+    width: 90%;
+  }
+  .form {
+    &__input {
+      width: 95%;
+    }
+  }
+}

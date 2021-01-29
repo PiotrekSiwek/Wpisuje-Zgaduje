@@ -1,25 +1,29 @@
 import React from 'react';
 
-import "./Game.scss";
-
+import "./randomPictures.scss";
 
 const RandomPictures = ({pictures}) => {
-
     return (
-        pictures.length === 0 ?
-            <div className="game__pictures">
-                <div className="game__pictures__frame frame-color-change"><div className="game__pictures__loading"/></div>
-                <div className="game__pictures__frame frame-color-change"><div className="game__pictures__loading"/></div>
-                <div className="game__pictures__frame frame-color-change"><div className="game__pictures__loading"/></div>
+            !pictures.length ?
+            <div className="game-pictures">
+                <div className="pictures frame-color-change">
+                    <div className="pictures__loading"/>
+                </div>
+                <div className="pictures frame-color-change">
+                    <div className="pictures__loading"/>
+                </div>
+                <div className="pictures frame-color-change">
+                    <div className="pictures__loading"/>
+                </div>
             </div>
             :
-            <div className="game__pictures">
-                {pictures.map((elm, index) => {
+            <div className="game-pictures">
+                {pictures.map(({src:{tiny}}, index) => {
                     return (
-                        <div key={index} className="game__pictures__frame">
-                            <img className="game__pictures__photos"
-                                 src={elm.src.tiny}
-                                 alt=""
+                        <div key={index} className="pictures">
+                            <img className="pictures__photos"
+                                 src={tiny}
+                                 alt="mix"
                             />
                         </div>
                     )
@@ -29,4 +33,4 @@ const RandomPictures = ({pictures}) => {
     )
 }
 
-export default RandomPictures
+export default RandomPictures;

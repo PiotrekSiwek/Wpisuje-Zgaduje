@@ -4,7 +4,7 @@ import {HashRouter, Route} from "react-router-dom";
 import Game from "./game/Game";
 import Intro from "./intro/Intro";
 
-import "./section.scss"
+import "./section.scss";
 
 const Section = () => {
     return (
@@ -16,4 +16,4 @@ const Section = () => {
         </section>
     )
 }
-export default Section
+export default Section;

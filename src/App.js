@@ -6,15 +6,15 @@ import Footer from "./componenets/footer/Footer";
 import Header from "./componenets/header/Header";
 import Main from "./componenets/main/Main";
 import LoginProvider from "./contexts/LoginContext";
-
+import log from "loglevel";
 
 import "./app.scss";
 
-
 const App = () => {
-
     useEffect(()=>{
-        firebase.auth().signOut().catch(message => console.log(message))
+        firebase.auth()
+            .signOut()
+            .catch(message => log.error(message))
     },[])
 
     return (

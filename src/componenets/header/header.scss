@@ -4,113 +4,112 @@
   background: #1d1d1d;
   opacity: 0.8;
 
-
-  .header__box {
+  &__box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
 
+  &__text,
+  &__login {
+    font-family: $mainFont;
+    color: white;
+    font-size: 30px;
+    width: 30%;
+    text-align: center;
+  }
 
-    .header__text,
-    .header__login {
-      font-family: $mainFont;
-      color: white;
-      font-size: 30px;
-      width: 30%;
-      text-align: center;
-    }
+  &__text > span {
+    display: block;
+  }
 
-    .header__text > span {
-      display: block;
-    }
+  &__logo strong {
+    font-family: $logoFont;
+    font-size: 40px;
+  }
 
-    .header__logo strong {
-      font-family: $logoFont;
-      font-size: 40px;
-    }
+  &__logo strong:nth-of-type(1) {
+    color: orange;
+  }
 
-    .header__logo strong:nth-of-type(1) {
-      color: orange;
-    }
+  &__logo strong:nth-of-type(2) {
+    color: red;
+  }
 
-    .header__logo strong:nth-of-type(2) {
-      color: red;
-    }
+  &__logo strong:nth-of-type(3) {
+    color: green;
+  }
 
-    .header__logo strong:nth-of-type(3) {
-      color: green;
-    }
+  &__logo > span {
+    color: white;
+    font-size: 40px;
+  }
 
-    .header__logo > span {
-      color: white;
-      font-size: 40px;
-    }
-
-    .fa-pen {
-      font-size: 30px;
-      color: #236bc3;
-      margin-left: 5px;
-    }
+  .fa-pen {
+    font-size: 30px;
+    color: #236bc3;
+    margin-left: 5px;
   }
 }
+
 
 @media (max-width: 970px) {
   .header {
-    .header__box {
-      .header__text {
-        width: 40%;
-      }
-      .header__text > span {
-        display: inline;
-      }
+
+    &__text {
+      width: 40%;
+    }
+
+    &__text > span {
+      display: inline;
     }
   }
 }
-
 
 @media (max-width: 600px) {
   .header {
-    .header__box {
-      .header__text {
-        display: none;
-      }
-      .header__logo {
-        width: 45%;
-        margin-left: 50px;
-      }
-      .header__logo strong {
-        font-size: 30px;
-      }
-      .header__logo > span {
-        font-size: 30px;
-      }
-      .fa-pen {
-        font-size: 20px;
-      }
-      .header__login {
-        width: 45%;
-        font-size: 25px;
-      }
+
+    &__text {
+      display: none;
+    }
+
+    &__logo {
+      width: 45%;
+      margin-left: 50px;
+    }
+
+    &__logo strong {
+      font-size: 30px;
+    }
+
+    &__logo > span {
+      font-size: 30px;
+    }
+
+    .fa-pen {
+      font-size: 20px;
+    }
+
+    &__login {
+      width: 45%;
+      font-size: 25px;
     }
   }
 }
-
-
-//------- Media ----------
-
 
 @media (max-width: 390px) {
-  .header {
-    .header__box {
-      .header__logo {
-        margin-left: 1px;
-      }
-      .header__login {
-        width: 70%;
-      }
+  .header{
+
+    &__logo {
+      margin-left: 1px;
+    }
+
+    &__login {
+      width: 70%;
     }
   }
 }
+
 
 
 

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Aside from "./aside/Aside";
 import Section from "./section/Section";
-import "./main.scss"
+
+import "./main.scss";
 
 const Main = () => {
     return (
@@ -11,4 +13,4 @@ const Main = () => {
         </main>
     )
 }
-export default Main
+export default Main;

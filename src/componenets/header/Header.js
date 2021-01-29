@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import "./header.scss";
 import {LoginContext} from "../../contexts/LoginContext";
 
-const Header = () => {
+import "./header.scss";
 
-    const {userName} = useContext(LoginContext)
+const Header = () => {
+    const {userName} = useContext(LoginContext);
 
     return (
         <header className="header">
@@ -13,9 +13,9 @@ const Header = () => {
                     Ucze sie pisania wyrazow <span>klasa I</span>
                 </div>
                 <div className="header__logo">
-                    <strong><span>A</span></strong>
-                    <strong><span>B</span></strong>
-                    <strong><span>C</span></strong>
+                    <strong>A</strong>
+                    <strong>B</strong>
+                    <strong>C</strong>
                     <span>...</span>
                     <i className="fas fa-pen"/>
                 </div>
@@ -27,4 +27,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;
